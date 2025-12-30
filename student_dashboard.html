@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        body { font-family: Arial; background: #f4f6f8; padding: 20px; }
+        h2 { color: #333; }
+        .hostel {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 5px #ccc;
+        }
+        img { width: 150px; margin: 5px; border-radius: 5px; }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Welcome Student</h2>
+<a href="/logout">Logout</a>
+
+<hr>
+
+<h3>🏠 Available Hostels</h3>
+
+{% for h in hostels %}
+<div class="hostel">
+    <b>Hostel Name:</b> {{ h.name }} <br>
+    <b>College:</b> {{ h.college }} <br>
+    <b>Available Rooms:</b> {{ h.available_rooms }} <br><br>
+
+    {% if h.available_rooms > 0 %}
+    <form action="/student/apply/{{ h.id }}" method="post" enctype="multipart/form-data">
+        Upload College ID Card:
+        <input type="file" name="document" required><br><br>
+        <button type="submit">Apply for Hostel</button>
+    </form>
+    {% else %}
+    <b style="color:red;">No rooms available</b>
+    {% endif %}
+</div>
+{% endfor %}
+
+<hr>
+
+<h3>🖼️ Room Photos</h3>
+
+{% for p in photos %}
+    <img src="{{ url_for('static', filename='uploads/' + p.filename) }}">
+{% endfor %}
+
+</body>
+</html>

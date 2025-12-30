@@ -1,0 +1,12 @@
+<h2>Principal Dashboard</h2>
+
+{% for a in apps %}
+<p>
+{{a.username}} - {{a.name}}
+<a href="/static/uploads/{{a.document}}">View ID</a>
+<a href="/principal/approve/{{a.id}}">Approve</a>
+<a href="/principal/reject/{{a.id}}">Reject</a>
+</p>
+{% endfor %}
+
+<a href="/logout">Logout</a>

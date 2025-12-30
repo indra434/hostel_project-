@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head><title>Register</title>
+<style>body{font-family:Arial;margin:50px auto;max-width:400px;background:white;padding:30px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);}
+input,select,button{width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:5px;box-sizing:border-box;}
+button{background:#2196F3;color:white;border:none;cursor:pointer;font-size:16px;}
+.flash{padding:12px;margin:10px 0;border-radius:5px;}
+</style></head>
+<body>
+<h2>👤 Register</h2>
+{% with messages=get_flashed_messages(with_categories=true) %}{% if messages %}
+{% for category,message in messages %}<div class="flash {{category}}">{{message}}</div>{% endfor %}
+{% endif %}{% endwith %}
+<form method="POST">
+<input type="text" name="username" placeholder="Username" required>
+<input type="password" name="password" placeholder="Password" required>
+<select name="role" required><option value="">Select Role</option>
+<option value="student">Student</option><option value="principal">Principal</option>
+<option value="guardian">Guardian</option></select>
+<input type="text" name="college" placeholder="College">
+<button>Register</button>
+</form><p><a href="{{url_for('login')}}">Back to Login</a></p>
+</body></html>

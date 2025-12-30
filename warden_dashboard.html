@@ -1,0 +1,22 @@
+<h2>Warden Dashboard</h2>
+
+<form method="post" action="/warden/attendance">
+<select name="student">
+{% for s in students %}
+<option value="{{s.id}}">{{s.username}}</option>
+{% endfor %}
+</select>
+<input type="date" name="date">
+<select name="status">
+<option>present</option>
+<option>absent</option>
+</select>
+<button>Mark</button>
+</form>
+
+<form method="post" action="/warden/photo" enctype="multipart/form-data">
+<input type="file" name="photo">
+<button>Upload Room Photo</button>
+</form>
+
+<a href="/logout">Logout</a>

@@ -1,0 +1,7 @@
+<h2>Guardian Dashboard</h2>
+
+{% for a in attendance %}
+<p>{{a.username}} - {{a.date}} - {{a.status}}</p>
+{% endfor %}
+
+<a href="/logout">Logout</a>
